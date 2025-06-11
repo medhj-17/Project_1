@@ -1,0 +1,24 @@
+##  SQL query that aggregates the aFRR volumes up and down from 1min to 15min granularity and stores the result in a third SQL table
+````
+CREATE TABLE IF NOT EXISTS quarter_hourly_volume AS
+SELECT
+
+    CASE
+        WHEN EXTRACT(minute FROM datetime) < 15
+        THEN date_trunc('hour', datetime)
+
+        WHEN EXTRACT(minute FROM datetime) < 30
+        THEN date_trunc('hour', datetime) + INTERVAL '15 minutes'
+        
+        WHEN EXTRACT(minute FROM datetime) < 45
+        THEN date_trunc('hour', datetime) + INTERVAL '30 minutes'
+        
+        ELSE date_trunc('hour', datetime) + INTERVAL '45 minutes'
+    END AS Quarter,
+    SUM(afrrvolumeup) AS total_afrrvolumeup,
+    SUM(afrrvolumedown) AS total_afrrvolumedown
+FROM ods126_september_2024
+GROUP BY Quarter
+ORDER BY Quarter
+````
+

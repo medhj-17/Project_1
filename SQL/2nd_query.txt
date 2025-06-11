@@ -1,0 +1,18 @@
+## SQL query that calculates, for the day 05/09/2024, the revenue in € from the aFRR up and down markets using the 15min imbalance price and the aggregated  data from the previous step
+
+````
+
+CREATE TABLE IF NOT EXISTS quarter_hourly_price AS
+SELECT
+    p.datetime,
+    p.imbalanceprice * v.total_afrrvolumeup AS quarter_hourly_price_up,
+    p.imbalanceprice * v.total_afrrvolumedown AS quarter_hourly_price_down
+FROM
+    quarter_hourly_volume v
+INNER JOIN
+    ods134_september_2024 p
+    ON v.quarter = p.datetime
+WHERE
+    EXTRACT(day FROM p.datetime) = 5
+    
+````
