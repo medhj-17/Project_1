@@ -1,15 +1,15 @@
-# Project_1
+# The project steps :
 
-The project steps :
+
 
 1 - Setting up a local postgreSQL server using a Docker container
-2 - Implementing a Python script that retrieves two datasets for September 2024 and stores
-the retrieved data in two SQL tables within a postgreSQL database
-3 - Writing an SQL query that aggregates the aFRR volumes up and down from 1min to
-15min granularity and stores the result in a third SQL table
-4 - Writing an SQL query that calculates, for the day 05/09/2024, the revenue in € from the
-aFRR up and down markets using the 15min imbalance price and the aggregated
-data from the previous step.
+
+2 - Implementing a Python script that retrieves two datasets for September 2024 and stores the retrieved data in two SQL tables within a postgreSQL database
+
+3 - Writing an SQL query that aggregates the aFRR volumes up and down from 1min to 15min granularity and stores the result in a third SQL table
+
+4 - Writing an SQL query that calculates, for the day 05/09/2024, the revenue in € from the aFRR up and down markets using the 15min imbalance price and the aggregated data from the previous step.
+
 
 ### Setting Up a Local PostgreSQL Server with Docker in Google Colab
 
